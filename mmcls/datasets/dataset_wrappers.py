@@ -126,7 +126,7 @@ class ClassBalancedDataset(object):
 
     # 这里做实验， 用的是单标签分类，所以实例化一个get_cat_ids
     def get_cat_ids(self, idx):
-        return self.data_infos[idx]['gt_label'].astype(np.int)
+        return self.data_infos[idx]['gt_label'].astype(int)
 
 
     def _get_repeat_factors(self, dataset, repeat_thr):

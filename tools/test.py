@@ -528,7 +528,7 @@ def save_evaluation_in_sheet_mutil_class(sheet_w, data_type, data_name,shiyan_na
 def calculate_confusion_matrix(pred, target, num_classes):
     pred_label = np.argmax(pred, axis=1)
     assert (pred_label.shape) == (target.shape)
-    confusion_matrix = np.zeros((num_classes, num_classes), dtype=np.int)
+    confusion_matrix = np.zeros((num_classes, num_classes), dtype=int)
     with torch.no_grad():
         for t, p in zip(target, pred_label):
             confusion_matrix[t, p] += 1
