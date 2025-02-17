@@ -112,7 +112,7 @@ def main():
 
     # log some basic info
     logger.info(f'Distributed training: {distributed}')
-    logger.info(f'Config:\n{cfg.pretty_text}')
+    # logger.info(f'Config:\n{cfg.pretty_text}')
 
     # set random seeds
     if args.seed is not None:
@@ -134,7 +134,7 @@ def main():
         # checkpoints as meta data
         cfg.checkpoint_config.meta = dict(
             mmcls_version=__version__,
-            config=cfg.pretty_text,
+            # config=cfg.pretty_text,
             CLASSES=datasets[0].CLASSES)
     
     # add an attribute for visualization convenience
