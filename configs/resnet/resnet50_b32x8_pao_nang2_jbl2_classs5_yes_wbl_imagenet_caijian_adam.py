@@ -1,6 +1,4 @@
-
-
-#  python tools/train.py  configs/resnet/resnet50_b32x8_pao_nang2_jbl2_classs5_yes_wbl_imagenet_caijian_adam.py
+# python tools/train.py  configs/resnet/resnet50_b32x8_pao_nang2_jbl2_classs5_yes_wbl_imagenet_caijian_adam.py
 
 # python tools/test_pao_nang2_jbl2_classs5_yes_wbl_caijian_adam.py  configs/resnet/resnet50_b32x8_pao_nang2_jbl2_classs5_yes_wbl_imagenet_caijian_adam.py work_dirs/resnet50_b32x8_pao_nang2_jbl2_classs5_yes_wbl_caijian_adam/200.pth --metrics accuracy precision recall --out out/yes_wbl_caijian/pao_nang2_jbl2_classs5_yes_wbl_caijian_adam.json
 
@@ -23,7 +21,7 @@ model = dict(
         num_stages=4,
         out_indices=(3, ),
         style='pytorch'),
-    neck=dict(type='GlobalAveragePooling'),
+    neck=dict(type='GlobalAveragePooling', _delete_=True),
     head=dict(
         type='LinearClsHead',
         num_classes=5,  #todo:
@@ -110,7 +108,7 @@ optimizer = dict(type='Adam', lr=0.001) #todo:
 optimizer_config = dict(grad_clip=None)
 # learning policy
 lr_config = dict(policy='step', step=[15])
-runner = dict(type='EpochBasedRunner', max_epochs=200)
+runner = dict(type='EpochBasedRunner', max_epochs=3000)
 # checkpoint saving
 checkpoint_config = dict(interval=25)
 # yapf:disable,  interval=100
@@ -126,5 +124,5 @@ load_from = None
 resume_from = None
 workflow = [('train', 1)]
 
-resume_from = 'checkpoints/resnet50_batch256_imagenet_20200708-cfb998bf.pth'
-work_dir = 'work_dirs/resnet50_b32x8_pao_nang2_jbl2_classs5/'
+resume_from = '/leonardo/home/userinternal/lbabetto/EuroCC/echinococcosi/HE_DCNN/checkpoints/resnet50_batch256_imagenet_20200708-cfb998bf.pth'
+work_dir = '/leonardo_scratch/fast/cin_staff/lbabetto/echinococcosi/test'
